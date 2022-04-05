@@ -1,8 +1,20 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { isMovieSelected } from "../store/movie/selectors";
+import { toggleSelectMovie } from "../store/movie/slice";
 
 const MovieRow = ({ movie }) => {
+  const dispatch = useDispatch();
+
+  const isSelected = useSelector((state) => isMovieSelected(state, movie.id));
+
   return (
     <div>
+      <input
+        type="checkbox"
+        value={isSelected}
+        onChange={() => dispatch(toggleSelectMovie(movie.id))}
+      />
       <p>Title: {movie.title}</p>
       <p>Director: {movie.director}</p>
       <img src={movie.imageUrl} />
