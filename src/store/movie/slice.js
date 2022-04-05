@@ -23,10 +23,21 @@ const movieSlice = createSlice({
         state.selectedMovies.push(action.payload);
       }
     },
+    deselectAll: (state) => {
+      state.selectedMovies = [];
+    },
+    selectedAll: (state) => {
+      state.selectedMovies = state.movies.map((movie) => movie.id);
+    },
   },
 });
 
-export const { setMovies, setSearchValue, toggleSelectMovie } =
-  movieSlice.actions;
+export const {
+  setMovies,
+  setSearchValue,
+  toggleSelectMovie,
+  deselectAll,
+  selectedAll,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;
