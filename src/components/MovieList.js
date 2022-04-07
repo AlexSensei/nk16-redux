@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import movieService from "../services/MovieService";
 import { moviesSelector, searchValueSelector } from "../store/movie/selectors";
-import { setMovies } from "../store/movie/slice";
+import { getMovies, setMovies } from "../store/movie/slice";
 import MovieRow from "./MovieRow";
 
 const MovieList = (props) => {
@@ -14,6 +14,7 @@ const MovieList = (props) => {
 
   useEffect(() => {
     fetchMovies();
+    dispatch(getMovies());
   }, []);
 
   const fetchMovies = async () => {

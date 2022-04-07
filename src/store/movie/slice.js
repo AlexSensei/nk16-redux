@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const middlewareActions = {
+  getMovies: () => {},
+};
+
 const movieSlice = createSlice({
   name: "movie",
   initialState: {
@@ -37,6 +41,7 @@ const movieSlice = createSlice({
     changePage: (state, action) => {
       state.pageNo += action.payload;
     },
+    ...middlewareActions,
   },
 });
 
@@ -48,6 +53,7 @@ export const {
   selectedAll,
   setSortBy,
   changePage,
+  getMovies,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
