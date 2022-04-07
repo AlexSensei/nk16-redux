@@ -10,17 +10,19 @@ const MovieRow = ({ movie }) => {
 
   return (
     <div>
-      <input
+      {/* <input
         type="checkbox"
         checked={isSelected}
         onChange={() => dispatch(toggleSelectMovie(movie.id))}
-      />
-      <p>Title: {movie.title}</p>
-      <p>Director: {movie.director}</p>
+      /> */}
+      <p>
+        {movie.id} Title: {movie.title}
+      </p>
+      {/* <p>Director: {movie.director}</p>
       <img src={movie.imageUrl} />
       <p>Release date: {movie.releaseDate}</p>
       <p>Genre: {movie.genre}</p>
-      <p>Duration: {movie.duration}</p>
+      <p>Duration: {movie.duration}</p> */}
     </div>
   );
 };

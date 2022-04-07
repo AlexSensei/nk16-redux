@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectedMoviesCount } from "./store/movie/selectors";
 import { deselectAll, selectedAll } from "./store/movie/slice";
 import MovieFilter from "./components/MovieFilter";
+import { MoviePagination } from "./components/MoviePagination";
 
 function App() {
   const count = useSelector(selectedMoviesCount);
@@ -19,6 +20,7 @@ function App() {
       <button onClick={() => dispatch(selectedAll())}>Select all</button>
       <MovieFilter />
       <MovieList />
+      <MoviePagination />
     </div>
   );
 }

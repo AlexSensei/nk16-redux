@@ -7,6 +7,7 @@ const movieSlice = createSlice({
     searchValue: "",
     selectedMovies: [],
     sortBy: "",
+    pageNo: 1,
   },
   reducers: {
     setMovies: (state, action) => {
@@ -33,6 +34,9 @@ const movieSlice = createSlice({
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    changePage: (state, action) => {
+      state.pageNo += action.payload;
+    },
   },
 });
 
@@ -43,6 +47,7 @@ export const {
   deselectAll,
   selectedAll,
   setSortBy,
+  changePage,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

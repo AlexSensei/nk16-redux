@@ -9,20 +9,20 @@ export const moviesSelector = (state) => {
 
   switch (sortBy) {
     case "nameAsc":
-      return movies.sort((a, b) =>
+      movies = movies.sort((a, b) =>
         a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
       );
     case "nameDesc":
-      return movies.sort((a, b) =>
+      movies = movies.sort((a, b) =>
         a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1
       );
     case "durationAsc":
-      return movies.sort((a, b) => a.duration - b.duration);
+      movies = movies.sort((a, b) => a.duration - b.duration);
     case "durationDesc":
-      return movies.sort((a, b) => b.duration - a.duration);
+      movies = movies.sort((a, b) => b.duration - a.duration);
   }
 
-  return movies;
+  return movies.slice((state.movie.pageNo - 1) * 5, state.movie.pageNo * 5);
 };
 
 export const isMovieSelected = (state, id) => {
@@ -30,3 +30,8 @@ export const isMovieSelected = (state, id) => {
 };
 
 export const selectedMoviesCount = (state) => state.movie.selectedMovies.length;
+
+export const selectMoviePage = (state) => state.movie.pageNo;
+
+export const hasNextPage = (state) =>
+  state.movie.pageNo * 5 < state.movie.movies.length;
